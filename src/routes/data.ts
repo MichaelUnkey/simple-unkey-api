@@ -65,12 +65,12 @@ function generateRandomProduct(): RandomProduct {
 function generateRandomQuote(): RandomQuote {
 	const quotes = [
 		{
-			text: "The only way to do great work is to love what you do.",
-			author: "Steve Jobs",
+			text: "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.",
+			author: "Albert Einstein",
 		},
 		{
-			text: "Innovation distinguishes between a leader and a follower.",
-			author: "Steve Jobs",
+			text: "Look up at the stars and not down at your feet.",
+			author: "Stephen Hawking",
 		},
 		{
 			text: "Life is what happens when you're busy making other plans.",
