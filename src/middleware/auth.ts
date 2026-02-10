@@ -18,8 +18,6 @@ export async function unkeyAuth(req: Request, res: Response, next: NextFunction)
 			return;
 		}
 
-		console.log("Verifying key - token:", token);
-
 		const verifyResponse = await fetch("https://api.unkey.com/v2/keys.verifyKey", {
 			method: "POST",
 			headers: {
@@ -31,25 +29,19 @@ export async function unkeyAuth(req: Request, res: Response, next: NextFunction)
 			}),
 		});
 
-		console.log("HTTP Status:", verifyResponse.status);
 		const responseText = await verifyResponse.text();
-		console.log("Raw response:", responseText);
 
 		let data;
 		try {
 			data = JSON.parse(responseText);
 		} catch (parseErr) {
-			console.error("Failed to parse response:", parseErr);
 			res.status(500).json({
 				error: "Invalid response from authentication service",
 			});
 			return;
 		}
 
-		console.log("Parsed data:", JSON.stringify(data, null, 2));
-
 		if (!verifyResponse.ok) {
-			console.error("Unkey API error:", data);
 			res.status(500).json({
 				error: "Failed to verify API key",
 				details: data.error || data.message || "Authentication service error",
@@ -60,7 +52,6 @@ export async function unkeyAuth(req: Request, res: Response, next: NextFunction)
 		const result = data.data;
 
 		if (!result || !result.valid) {
-			console.log("Invalid API key - code:", result?.code);
 			res.status(401).json({
 				error: "Invalid API key",
 				reason: result?.code || "unknown",
@@ -68,7 +59,6 @@ export async function unkeyAuth(req: Request, res: Response, next: NextFunction)
 			return;
 		}
 
-		console.log("API key verified successfully");
 		next();
 	} catch (err) {
 		console.error("Unkey exception:", err);
