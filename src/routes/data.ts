@@ -1,6 +1,7 @@
+import type { Router as ExpressRouter } from "express";
 import { Router } from "express";
 
-const router = Router();
+const router: ExpressRouter = Router();
 
 interface RandomUser {
 	id: string;
@@ -22,6 +23,13 @@ interface RandomQuote {
 	id: string;
 	text: string;
 	author: string;
+}
+
+interface RandomJoke {
+	id: string;
+	setup: string;
+	punchline: string;
+	category: string;
 }
 
 function generateRandomUser(): RandomUser {
@@ -82,6 +90,58 @@ function generateRandomQuote(): RandomQuote {
 	};
 }
 
+function generateRandomJoke(): RandomJoke {
+	const jokes = [
+		{
+			setup: "Why do programmers prefer dark mode?",
+			punchline: "Because light attracts bugs!",
+			category: "Programming",
+		},
+		{
+			setup: "Why did the developer go broke?",
+			punchline: "Because he used up all his cache!",
+			category: "Programming",
+		},
+		{
+			setup: "What do you call a bear with no teeth?",
+			punchline: "A gummy bear!",
+			category: "General",
+		},
+		{
+			setup: "Why don't scientists trust atoms?",
+			punchline: "Because they make up everything!",
+			category: "Science",
+		},
+		{
+			setup: "How do you comfort a JavaScript bug?",
+			punchline: "You console it!",
+			category: "Programming",
+		},
+		{
+			setup: "Why did the function break up with the variable?",
+			punchline: "Because it had too many arguments!",
+			category: "Programming",
+		},
+		{
+			setup: "What's a pirate's favorite programming language?",
+			punchline: "You'd think it's R, but it's actually the C!",
+			category: "Programming",
+		},
+		{
+			setup: "Why did the scarecrow win an award?",
+			punchline: "Because he was outstanding in his field!",
+			category: "General",
+		},
+	];
+
+	const joke = jokes[Math.floor(Math.random() * jokes.length)];
+
+	return {
+		id: crypto.randomUUID(),
+		...joke,
+	};
+}
+
 router.get("/users", (req, res) => {
 	const count = Number.parseInt(req.query.count as string) || 5;
 	const users = Array.from({ length: Math.min(count, 100) }, () => generateRandomUser());
@@ -129,6 +189,16 @@ router.get("/random", (req, res) => {
 	res.json({
 		type: randomType,
 		data,
+	});
+});
+
+router.get("/jokes", (req, res) => {
+	const count = Number.parseInt(req.query.count as string) || 1;
+	const jokes = Array.from({ length: Math.min(count, 10) }, () => generateRandomJoke());
+
+	res.json({
+		data: jokes,
+		count: jokes.length,
 	});
 });
 

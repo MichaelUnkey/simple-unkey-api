@@ -18,6 +18,7 @@ app.get("/", (req, res) => {
 			"/api/users": "Get random users (query: ?count=5)",
 			"/api/products": "Get random products (query: ?count=5)",
 			"/api/quotes": "Get random quotes (query: ?count=1)",
+			"/api/jokes": "Get random jokes (query: ?count=1)",
 			"/api/random": "Get a random item of any type",
 		},
 		note: "All /api/* endpoints require authentication via Unkey API key",
