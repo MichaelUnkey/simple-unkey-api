@@ -51,7 +51,7 @@ function generateRandomUser(): RandomUser {
 
 function generateRandomProduct(): RandomProduct {
 	const products = ["Laptop", "Smartphone", "Headphones", "Keyboard", "Mouse", "Monitor", "Tablet"];
-	const categories = ["Electronics", "Accessories", "Computers", "Mobile"];
+	const categories = ["Electronics", "Accessories", "Computers", "Mobile", "Home", "Kitchen"];
 
 	return {
 		id: crypto.randomUUID(),
