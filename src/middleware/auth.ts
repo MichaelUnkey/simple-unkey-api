@@ -15,7 +15,7 @@ export async function unkeyAuth(req: Request, res: Response, next: NextFunction)
 
 		if (!rootKey) {
       res.status(500).json({ error: "Server configuration error: Missing UNKEY_ROOT_KEY" });
-			console.error(`Missing UNKEY_ROOT_KEY ${rootKey}`);
+			console.error(`Missing Vars ${process.env}`);
 			return;
 		}
 
