@@ -92,7 +92,18 @@ function generateRandomQuote(): RandomQuote {
       text: "In three words I can sum up everything I've learned about life: it goes on.",
       author: "Robert Frost",
     },
-		
+    {
+      text: "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+      author: "Winston Churchill",
+    },
+		{
+			text: "The only way to do great work is to love what you do.",
+			author: "Steve Jobs",
+		},
+		{
+			text: "You miss 100% of the shots you don't take.",
+			author: "Wayne Gretzky",
+		},
 	];
 
 	const quote = quotes[Math.floor(Math.random() * quotes.length)];
