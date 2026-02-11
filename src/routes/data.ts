@@ -79,7 +79,20 @@ function generateRandomQuote(): RandomQuote {
 		{
 			text: "The future belongs to those who believe in the beauty of their dreams.",
 			author: "Eleanor Roosevelt",
-		},
+    },
+    {
+      text: "Be yourself; everyone else is already taken.",
+      author: "Oscar Wilde",
+    },
+    {
+      text: "Be the change you wish to see in the world.",
+      author: "Mahatma Gandhi",
+    },
+    {
+      text: "In three words I can sum up everything I've learned about life: it goes on.",
+      author: "Robert Frost",
+    },
+		
 	];
 
 	const quote = quotes[Math.floor(Math.random() * quotes.length)];
