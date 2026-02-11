@@ -11,10 +11,10 @@ export async function unkeyAuth(req: Request, res: Response, next: NextFunction)
 	const token = authHeader.startsWith("Bearer ") ? authHeader.substring(7) : authHeader;
 
 	try {
-		const rootKey = process.env.UNKEY_ROOT_KEY;
+		const rootKey = process.env.MY_ROOT_KEY;
 
 		if (!rootKey) {
-      res.status(500).json({ error: "Server configuration error: Missing UNKEY_ROOT_KEY" });
+      res.status(500).json({ error: "Server configuration error: Missing MY_ROOT_KEY" });
 			console.error(`Missing Vars ${process.env}`);
 			return;
 		}

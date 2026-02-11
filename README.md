@@ -27,7 +27,7 @@ cp .env.example .env
 ```
 
 Update the `.env` file with your actual Unkey credentials:
-- `UNKEY_ROOT_KEY`: Your Unkey root key (get it from https://unkey.com)
+- `MY_ROOT_KEY`: Your Unkey root key (get it from https://unkey.com)
 
 ### 3. Run the development server
 
@@ -49,7 +49,7 @@ docker build -t simple-unkey-api .
 
 ```bash
 docker run -p 8080:8080 \
-  -e UNKEY_ROOT_KEY=your_unkey_root_key_here \
+  -e MY_ROOT_KEY=your_unkey_root_key_here \
   simple-unkey-api
 ```
 
