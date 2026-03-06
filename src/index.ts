@@ -4,7 +4,7 @@ import { unkeyAuth } from "./middleware/auth.js";
 import dataRoutes from "./routes/data.js";
 
 dotenv.config();
-
+// Random note for no reason
 const app = express();
 const PORT = process.env.PORT || 8080;
 
